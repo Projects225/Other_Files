@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Reference Template</title>
+    <style>
+        /* --- KONFIGURÁCIA FARIEB --- */
+        :root {
+            --bg-body: #f5f5f7;
+            --bg-container: #ffffff;
+            --text-main: #1d1d1f;
+            --text-secondary: #86868b;
+            --border: #d2d2d7;
+            --input-bg: #f5f5f7;
+            --primary: #0071e3;
+            --success: #28a745;
+            --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="dark"] {
+            --bg-body: #121212;
+            --bg-container: #1e1e1e;
+            --text-main: #f5f5f7;
+            --text-secondary: #a1a1a6;
+            --border: #333333;
+            --input-bg: #252525;
+        }
+
+        /* --- ZÁKLADNÝ RESET --- */
+        * { box-sizing: border-box; }
+        body {
+            margin: 0; padding: 20px;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            display: flex; justify-content: center; align-items: center;
+            min-height: 100vh;
+            transition: var(--transition);
+        }
+
+        .container {
+            background-color: var(--bg-container);
+            width: 100%; max-width: 450px;
+            padding: 40px; border-radius: 28px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            position: relative;
+        }
+
+        /* --- DARK MODE PREPÍNAČ (SVG) --- */
+        .theme-toggle {
+            position: absolute; top: 20px; right: 20px;
+            background: var(--input-bg);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            width: 40px; height: 40px;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: var(--transition);
+        }
+        .theme-toggle:hover { transform: rotate(15deg); }
+        .sun-icon { display: none; }
+        [data-theme="dark"] .moon-icon { display: none; }
+        [data-theme="dark"] .sun-icon { display: block; }
+
+        /* --- TEXTOVÉ POLE (INPUT) --- */
+        .input-group { margin: 20px 0; text-align: left; }
+        label { 
+            display: block; margin-bottom: 8px; 
+            font-size: 13px; font-weight: 600; color: var(--text-secondary);
+        }
+        input[type="text"] {
+            width: 100%; padding: 14px 16px;
+            border-radius: 12px; border: 2px solid var(--border);
+            background: var(--input-bg);
+            color: var(--text-main);
+            font-size: 16px; outline: none;
+            transition: var(--transition);
+        }
+        input[type="text"]:focus { border-color: var(--primary); }
+
+        /* --- COPY BUTTON ŠTÝL --- */
+        .copy-wrapper {
+            display: flex; gap: 8px; align-items: center;
+            background: var(--input-bg);
+            padding: 8px; border-radius: 14px;
+            border: 1px solid var(--border);
+        }
+        .copy-text { flex: 1; font-family: monospace; font-size: 14px; padding-left: 8px; }
+        
+        .btn-copy {
+            background: var(--bg-container);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            width: 38px; height: 38px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: var(--transition);
+        }
+        .btn-copy:hover { background: var(--border); }
+        .btn-copy.success { 
+            background: var(--success) !important; 
+            color: white !important; 
+            border-color: var(--success) !important; 
+        }
+
+        /* --- TLAČIDLÁ --- */
+        .btn {
+            width: 100%; padding: 14px; margin-top: 10px;
+            border-radius: 12px; border: none;
+            font-weight: 600; cursor: pointer; transition: var(--transition);
+        }
+        .btn-rainbow {
+            background: linear-gradient(90deg, #ef5350, #7e57c2, #2196f3);
+            color: white;
+        }
+        .btn-rainbow:hover { opacity: 0.9; transform: translateY(-2px); }
+    </style>
+</head>
+<body data-theme="dark">
+
+    <div class="container">
+        <button class="theme-toggle" onclick="toggleTheme()">
+            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+        
+        <h2 style="margin-top:0">Referenčné Prvky</h2>
+
+        <div class="input-group">
+            <label>Užívateľské meno</label>
+            <input type="text" placeholder="Zadaj meno...">
+        </div>
+
+        <label>Výstupný kód (Copy style)</label>
+        <div class="copy-wrapper">
+            <span class="copy-text" id="targetText">#FF5733</span>
+            <button class="btn-copy" onclick="copyAction(this, 'targetText')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
+        </div>
+
+        <button class="btn btn-rainbow">Uložiť nastavenia</button>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', next);
+            localStorage.setItem('ref-theme', next);
+        }
+
+        function copyAction(btn, elementId) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const originalSVG = btn.innerHTML;
+                btn.classList.add('success');
+                // Check ikona
+                btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+                
+                setTimeout(() => {
+                    btn.classList.remove('success');
+                    btn.innerHTML = originalSVG;
+                }, 1500);
+            });
+        }
+
+        // Init theme
+        const saved = localStorage.getItem('ref-theme') || 'dark';
+        document.body.setAttribute('data-theme', saved);
+    </script>
+</body>
+</html>
